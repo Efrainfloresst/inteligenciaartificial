@@ -1,0 +1,57 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package mochilarecursiva;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ *
+ * @author estudiante
+ */
+public class Mochilarecursiva {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        ArrayList<Integer> l1 = new ArrayList();
+        LinkedList<Integer> l2= new LinkedList();        
+        l1.add(3);
+        l1.add(6);
+        l1.add(5);    
+        mochila(l1,l2,10,0);
+    }
+    public static void mochila  (List<Integer> l1 ,List<Integer> l2,  int max ,int i){
+        int sum = suma(l2);
+        if (sum > max) {
+            return;
+        }
+        System.out.println(l2);
+        int j = i;
+        while (j<l1.size()){
+            l2.add(l1.get(j));
+            mochila(l1,l2,max,j+1);
+            l2.remove(l2.size() - 1);
+            j++;
+        }        
+    }
+    public static int suma (List<Integer> l1){
+        int i = 0;
+        int sum = 0 ;
+        while (i <= l1.size() - 1){
+            sum = sum + l1.get(i); 
+            i ++;
+            
+        }
+        return sum;        
+    }
+    
+}
+
